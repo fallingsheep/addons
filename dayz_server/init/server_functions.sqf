@@ -809,7 +809,7 @@ server_checkHackers = {
 	if(!isNil "DZE_DYN_HackerCheck") exitWith {  DZE_DYN_AntiStuck2nd = DZE_DYN_AntiStuck2nd + 1;};
 	DZE_DYN_HackerCheck = true;
 	{
-		if(vehicle _x != _x && !(vehicle _x in PVDZE_serverObjectMonitor) && (vehicle _x getVariable [""Sarge"",0] != 1) && (isPlayer _x)  && !((typeOf vehicle _x) in DZE_safeVehicle)) then {
+		if(vehicle _x != _x && (vehicle _x getVariable ["Sarge",0] != 1) && !(vehicle _x in PVDZE_serverObjectMonitor) && (isPlayer _x)  && !((typeOf vehicle _x) in DZE_safeVehicle)) then {
 			diag_log ("CLEANUP: KILLING A HACKER " + (name _x) + " " + str(_x) + " IN " + (typeOf vehicle _x));
 			(vehicle _x) setDamage 1;
 			_x setDamage 1;
