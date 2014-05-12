@@ -209,7 +209,7 @@ if (isServer and isNil "sm_done") then {
 				};
 				
 				//Restore non extendable objects and make sure they follow the land contours
-				if (!(typeOf(_object) in allExtendables) && (_object isKindOf "Static") && !(_object isKindOf "TentStorage") && typeOf(_object) != "Grave") then {
+				if (!(typeOf(_object) in allExtendables) && (typeOf(_object) in allbuildables_class) && (_object isKindOf "Static") && !(_object isKindOf "TentStorage") && typeOf(_object) != "Grave") then {
 					_object setpos [(getposATL _object select 0),(getposATL _object select 1), 0];
 				};
 				//Set Variable
@@ -258,7 +258,7 @@ if (isServer and isNil "sm_done") then {
 				//####----####----####---- Base Building 1.3 End ----####----####----####
 
 			
-			if ((typeOf _object) in dayz_allowedObjects) then {
+			if ((typeOf _object) in dayz_allowedObjects) || (typeOf(_object) in allbuildables_class)then {
 				if (DZE_GodModeBase) then {
 					_object addEventHandler ["HandleDamage", {false}];
 				} else {
