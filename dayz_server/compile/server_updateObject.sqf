@@ -60,8 +60,17 @@ _object_position = {
 		_key call server_hiveWrite;
 };
 
+//####----####----####---- Base Building 1.3 Start ----####----####----####
 _object_inventory = {
 	private["_inventory","_previous","_key"];
+	if (typeOf(_object) in allbuildables_class) then
+	{
+		_inventory = _object getVariable ["AuthorizedUID", []]; //Shouldn't need to specify which array since it's all being updated here
+		_authorizedOUID = (_inventory select 0) select 0;
+		_key = format["CHILD:309:%1:%2:",_authorizedOUID,_inventory]; //was _uid,_inventory
+		diag_log ("HIVE: WRITE: "+ str(_key));
+		_key call server_hiveWrite;
+	} else {
 		_inventory = [
 			getWeaponCargo _object,
 			getMagazineCargo _object,
@@ -78,7 +87,10 @@ _object_inventory = {
 			//diag_log ("HIVE: WRITE: "+ str(_key));
 			_key call server_hiveWrite;
 		};
+	};
 };
+//####----####----####---- Base Building 1.3 End ----####----####----####
+
 
 _object_damage = {
 	private["_hitpoints","_array","_hit","_selection","_key","_damage"];
