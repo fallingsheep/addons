@@ -258,7 +258,7 @@ if (isServer and isNil "sm_done") then {
 				//####----####----####---- Base Building 1.3 End ----####----####----####
 
 			
-			if ((typeOf _object) in dayz_allowedObjects) || (typeOf(_object) in allbuildables_class)then {
+			if (((typeOf _object) in dayz_allowedObjects) || (typeOf(_object) in allbuildables_class))then {
 				if (DZE_GodModeBase) then {
 					_object addEventHandler ["HandleDamage", {false}];
 				} else {
