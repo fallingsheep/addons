@@ -30,6 +30,7 @@ _base1 setPos [(_coords select 0) + 5.4585, (_coords select 1) - 2.885,0];
 //We create the vehicles
 _veh1 = ["small"] call DZMSGetVeh;
 _vehicle = createVehicle [_veh1,[(_coords select 0) - 10.6206, (_coords select 1) - 0.49,0],[], 0, "CAN_COLLIDE"];
+_vehicle setVariable ["Sarge",1,true];
 
 //DZMSSetupVehicle prevents the vehicle from disappearing and sets fuel and such
 [_vehicle] call DZMSSetupVehicle;

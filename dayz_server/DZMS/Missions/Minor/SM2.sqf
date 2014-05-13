@@ -32,6 +32,8 @@ _veh1 = ["small"] call DZMSGetVeh;
 _veh2 = ["small"] call DZMSGetVeh;
 _vehicle = createVehicle [_veh1,[(_coords select 0) + 10, (_coords select 1) - 5,0],[], 0, "CAN_COLLIDE"];
 _vehicle1 = createVehicle [_veh2,[(_coords select 0) + 15, (_coords select 1) - 5,0],[], 0, "CAN_COLLIDE"];
+_vehicle setVariable ["Sarge",1,true];
+_vehicle1 setVariable ["Sarge",1,true];
 
 //DZMSSetupVehicle prevents the vehicle from disappearing and sets fuel and such
 [_vehicle] call DZMSSetupVehicle;

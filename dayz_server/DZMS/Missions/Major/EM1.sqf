@@ -18,6 +18,7 @@ _coords = call DZMSFindPos;
 
 //We create the mission scenery
 _wreck = createVehicle ["C130J",[(_coords select 0) - 8.8681, (_coords select 1) + 15.3554,0],[], 0, "NONE"];
+
 _wreck setDir -30.165445;
 [_wreck] call DZMSProtectObj;
 
@@ -68,6 +69,8 @@ _veh1 = ["small"] call DZMSGetVeh;
 _veh2 = ["small"] call DZMSGetVeh;
 _vehicle = createVehicle [_veh1,[(_coords select 0) + 14.1426, (_coords select 1) - 0.6202,0],[], 0, "CAN_COLLIDE"];
 _vehicle1 = createVehicle [_veh2,[(_coords select 0) - 6.541, (_coords select 1) - 11.5557,0],[], 0, "CAN_COLLIDE"];
+_vehicle setVariable ["Sarge",1,true];
+_vehicle1 setVariable ["Sarge",1,true];
 
 //DZMSSetupVehicle prevents the vehicle from disappearing and sets fuel and such
 [_vehicle] call DZMSSetupVehicle;

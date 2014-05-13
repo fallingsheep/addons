@@ -40,7 +40,7 @@ _body3 setDir 23.664057;
 //We create the vehicles like normal
 _veh1 = ["small"] call DZMSGetVeh;
 _vehicle = createVehicle [_veh1,[(_coords select 0) + 5.7534, (_coords select 1) - 9.2149,0],[], 0, "CAN_COLLIDE"];
-
+_vehicle setVariable ["Sarge",1,true];
 //DZMSSetupVehicle prevents the vehicle from disappearing and sets fuel and such
 [_vehicle] call DZMSSetupVehicle;
 

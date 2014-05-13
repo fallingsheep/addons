@@ -23,8 +23,10 @@ _chopper = createVehicle [_ranChopper,_coords,[], 0, "NONE"];
 //DZMSSetupVehicle prevents the vehicle from disappearing and sets fuel and such
 [_chopper] call DZMSSetupVehicle;
 _chopper setDir -36.279881;
+_chopper setVariable ["Sarge",1,true];
 
 _truck = createVehicle ["HMMWV_DZ",[(_coords select 0) - 8.7802,(_coords select 1) + 6.874,0],[], 0, "CAN_COLLIDE"];
+_truck setVariable ["Sarge",1,true];
 [_truck] call DZMSSetupVehicle;
 
 //Lets add the scenery

@@ -18,6 +18,7 @@ _coords = call DZMSFindPos;
 
 //Lets get the AN2 Flying
 _plane = createVehicle ["AN2_DZ", [0,0,500], [], 0, "FLY"];
+_plane setVariable ["Sarge",1,true];
 [_plane] call DZMSProtectObj;
 _plane engineOn true;
 _plane flyInHeight 150;

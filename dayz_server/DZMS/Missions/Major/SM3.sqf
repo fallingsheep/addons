@@ -94,6 +94,7 @@ _base17 setDir 55.969147;
 //Create the vehicles
 _veh1 = ["small"] call DZMSGetVeh;
 _vehicle = createVehicle [_veh1,[(_coords select 0) - 17.5078, (_coords select 1) + 5.2578,0],[], 0, "CAN_COLLIDE"];
+_vehicle setVariable ["Sarge",1,true];
 [_vehicle] call DZMSSetupVehicle;
 
 //Create the loot
