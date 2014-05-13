@@ -89,6 +89,7 @@ _key call server_hiveWrite;
 	if(!_donotusekey) then {
 		// Lock vehicle
 		_object setvehiclelock "locked";
+		_object setVariable ["MF_Tow_Cannot_Tow",true,true];
 	};
 
 	clearWeaponCargoGlobal  _object;
