@@ -5,14 +5,6 @@ BIS_MPF_remoteExecutionServer = {
 		[nil,(_this select 1) select 0,"loc",rJIPEXEC,[any,any,"per","execVM","ca\Modules\Functions\init.sqf"]] call RE;
 	};
 };
-/* Skaronator - secured better remoteExecServer
-BIS_MPF_remoteExecutionServer = {
-	if ((_this select 1) select 2 == "JIPrequest") then {
-		_playerObj = (_this select 1) select 0;			
-		remExField = [nil, nil, format ["";if !(isServer) then {[] execVM "ca\Modules\Functions\init.sqf";};""]];
-		(owner _playerObj) publicVariableClient "remExField";
-	};
-};*/
 
 BIS_Effects_Burn =				{};
 server_playerLogin =			compile preprocessFileLineNumbers "\z\addons\dayz_server\compile\server_playerLogin.sqf";
