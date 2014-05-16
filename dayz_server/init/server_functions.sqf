@@ -44,14 +44,12 @@ _isBuildable = _this select 2;
 	{
 		[_x, "gear"] call server_updateObject;
 	} forEach nearestObjects [_pos, dayz_updateObjects, 10];
-
 //####----####----####---- Base Building 1.3 Start ----####----####----####
 	if (_isBuildable) then {
 	[_object, "gear"] call server_updateObject;
 	_isBuildable = false;
 	};
 //####----####----####---- Base Building 1.3 End ----####----####----####
-
 };
 
 server_handleZedSpawn = {
