@@ -1,9 +1,10 @@
-private ["_characterID","_playerObj","_playerID","_dummy","_worldspace","_state","_doLoop","_key","_primary","_medical","_stats","_humanity","_lastinstance","_friendlies","_randomSpot","_position","_debug","_distance","_hit","_fractures","_score","_findSpot","_pos","_isIsland","_w","_clientID","_spawnMC","_namespace"];
+private ["_characterID","_playerObj","_playerID","_dummy","_worldspace","_state","_doLoop","_key","_primary","_medical","_stats","_humanity","_lastinstance","_friendlies","_randomSpot","_position","_debug","_distance","_hit","_fractures","_score","_findSpot","_pos","_isIsland","_w","_clientID","_spawnMC","_namespace", "_mkr"];
 
 //diag_log ("SETUP: attempted with " + str(_this));
 
 _characterID = _this select 0;
 _playerObj = _this select 1;
+_spawnSelection = _this select 3; // added 4 spawnselection
 _playerID = getPlayerUID _playerObj;
 
 if (isNull _playerObj) exitWith {
@@ -180,23 +181,31 @@ if (_randomSpot) then {
 	
 	//Spawn modify via mission init.sqf
 	if(isnil "spawnArea") then {
-		spawnArea = 1500;
+		spawnArea = 1500; // dont set to 0 or you spawn at map-center :D ... (should be checked to prevent)
 	};
 	if(isnil "spawnShoremode") then {
 		spawnShoremode = 1;
 	};
 	
-	// 
-	_spawnMC = actualSpawnMarkerCount;
+	_spawnMC = actualSpawnMarkerCount; // not used in spawnselection
 
 	//spawn into random
 	_findSpot = true;
 	_mkr = "";
+	_position = [0,0,0]; // clear
+
 	while {_findSpot} do {
 		_counter = 0;
 		while {_counter < 20 and _findSpot} do {
 			// switched to floor
-			_mkr = "spawn" + str(floor(random _spawnMC));
+			if (_spawnSelection == 9) then {
+				// random spawn location selected, lets get the marker and spawn in somewhere
+				if (dayz_spawnselection == 1) then { _mkr = "spawn" + str(floor(random 6)); } else { _mkr = "spawn" + str(floor(random 5)); };
+			} else {
+				// spawn is not random, lets spawn in our location that was selected
+				_mkr = "spawn" + str(_spawnSelection);
+			};
+			
 			_position = ([(getMarkerPos _mkr),0,spawnArea,10,0,2000,spawnShoremode] call BIS_fnc_findSafePos);
 			_isNear = count (_position nearEntities ["Man",100]) == 0;
 			_isZero = ((_position select 0) == 0) and ((_position select 1) == 0);
@@ -214,7 +223,8 @@ if (_randomSpot) then {
 			_counter = _counter + 1;
 		};
 	};
-	_isZero = ((_position select 0) == 0) and ((_position select 1) == 0);
+
+	_isZero = ((_position select 0) == 0) and ((_position select 1) == 0); //check!!
 	_position = [_position select 0,_position select 1,0];
 	if (!_isZero) then {
 		//_playerObj setPosATL _position;
