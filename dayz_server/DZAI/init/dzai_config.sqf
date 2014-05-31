@@ -26,7 +26,7 @@ DZAI_verifyTables = true;
 DZAI_objPatch = true;
 
 //Minimum seconds to pass until a dead AI body can be cleaned up by DZAI's task scheduler. Affects both static and dynamic AI units (Default: 300).										
-DZAI_cleanupDelay = 500;									
+DZAI_cleanupDelay = 300;									
 
 //Enable or disable DZAI reading from dzai_settings_override.sqf file (Default: true)
 DZAI_readOverrideFile = true;
@@ -46,7 +46,7 @@ DZAI_readOverrideFile = true;
 */
 
 //(Optional) In most cases it is unnecessary to edit this setting. If the wrong DayZ mod is being detected (or not being properly detected), choose the correct one from the list above. 
-DZAI_modName = "epoch";
+DZAI_modName = "";
 
 
 /*	AI Unit Settings
@@ -96,7 +96,7 @@ DZAI_respawnTimeMin = 300;
 DZAI_respawnTimeMax = 600;
 
 //Time to allow spawned AI units to exist in seconds before being despawned when no players are present in a trigger area. Applies to both static AI and custom spawned AI (Default: 120)										
-DZAI_despawnWait = 180;										
+DZAI_despawnWait = 120;										
 
 
 /*	Dynamic AI Spawning Settings
@@ -116,7 +116,7 @@ DZAI_heliReinforceChance = 0.75;
 DZAI_dynAreaBlacklist = [];
 
 //Time to wait before despawning all AI units in dynamic trigger area when no players are present. (Default: 120)
-DZAI_dynDespawnWait = 180;
+DZAI_dynDespawnWait = 120;
 
 
 /*	AI Air Vehicle patrol settings
@@ -124,7 +124,7 @@ DZAI_dynDespawnWait = 180;
 --------------------------------------------------------------------------------------------------------------------*/		
 
 //Maximum number of active AI air vehicle patrols. Set at 0 to disable (Default: 0).							
-DZAI_maxHeliPatrols = 6;
+DZAI_maxHeliPatrols = 0;
 
 //Set minimum and maximum wait time in seconds to respawn an AI vehicle patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 DZAI_respawnTMinA = 600;
@@ -132,7 +132,7 @@ DZAI_respawnTMaxA = 900;
 
 //Classnames of air vehicle types to use. Valid vehicle types: Helicopters and Planes (Default: "UH1H_DZ").
 //Air vehicles that are normally unarmed may have weapons added by DZAI (see "DZAI_airWeapons" setting below).								
-DZAI_heliTypes = ["UH1H_DZ","AH6X_DZ","Mi17_DZ","Mi24_D","MH6J_DZ","MV22","UH60M_EP1_DZ"];	
+DZAI_heliTypes = ["UH1H_DZ"];	
 
 //Specify vehicle weapon for air vehicles that are unarmed by default. DZAI will arm these air vehicles with the specified weapons upon spawning each vehicle.
 //NOTE: As of DZAI 1.9+, vehicle classnames are verified. If the classname is invalid (banned or nonexistent), it will not be added to the vehicle.
@@ -160,14 +160,14 @@ DZAI_airWeapons = [
 --------------------------------------------------------------------------------------------------------------------*/	
 
 //Maximum number of active AI land vehicle patrols. Set at 0 to disable (Default: 0).	
-DZAI_maxLandPatrols = 4;
+DZAI_maxLandPatrols = 0;
 
 //Set minimum and maximum wait time in seconds to respawn an AI vehicle patrol after vehicle is destroyed or disabled. (Default: Min 600, Max 900).
 DZAI_respawnTMinL = 600;
 DZAI_respawnTMaxL = 900;
 
 //Classnames of land vehicle types to use. (Default: "UAZ_Unarmed_TK_EP1")
-DZAI_vehTypes = ["UAZ_Unarmed_TK_EP1","GAZ_Vodnik_DZ","hilux1_civil_1_open","hilux1_civil_3_open","HMMWV_DZ","UAZ_INS","VWGolf"];
+DZAI_vehTypes = ["UAZ_Unarmed_TK_EP1"];
 
 
 /*	AI weapon selection settings
