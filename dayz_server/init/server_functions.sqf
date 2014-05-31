@@ -44,12 +44,14 @@ _isBuildable = _this select 2;
 	{
 		[_x, "gear"] call server_updateObject;
 	} forEach nearestObjects [_pos, dayz_updateObjects, 10];
+
 //####----####----####---- Base Building 1.3 Start ----####----####----####
 	if (_isBuildable) then {
 	[_object, "gear"] call server_updateObject;
 	_isBuildable = false;
 	};
 //####----####----####---- Base Building 1.3 End ----####----####----####
+
 };
 
 server_handleZedSpawn = {
@@ -801,7 +803,7 @@ server_checkHackers = {
 	if(!isNil "DZE_DYN_HackerCheck") exitWith {  DZE_DYN_AntiStuck2nd = DZE_DYN_AntiStuck2nd + 1;};
 	DZE_DYN_HackerCheck = true;
 	{
-		if(vehicle _x != _x && (vehicle _x getVariable ["Sarge",0] != 1) && !(vehicle _x in PVDZE_serverObjectMonitor) && (isPlayer _x)  && !((typeOf vehicle _x) in DZE_safeVehicle) && (vehicle _x getVariable ["MalSar",0] !=1)) then {
+		if(vehicle _x != _x && (vehicle _x getVariable ["Sarge",0] != 1) && !(vehicle _x in PVDZE_serverObjectMonitor) && (isPlayer _x)  && !((typeOf vehicle _x) in DZE_safeVehicle)) then {
 			diag_log ("CLEANUP: KILLING A HACKER " + (name _x) + " " + str(_x) + " IN " + (typeOf vehicle _x));
 			(vehicle _x) setDamage 1;
 			_x setDamage 1;
@@ -1077,3 +1079,43 @@ This Area is for extra arrays that need to be built, some using above arrays
 };
 //####----####----####---- BUILD LIST ARRAY SERVER SIDE End ----####----####----####
 //####----####----####---- Base Building 1.3 End ----####----####----####
+
+
+
+
+
+
+
+
+
+
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\Balota_airstrip_epoch.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\bridges.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\Cap_Golova.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\cherno_base_epoch.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\elektro_nato_base.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\elektro_town.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\KAMENKA_epoch.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\last_stand.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\otmel.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\train_wreck.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\North_West_Airstrip_V.2.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\j0k3r5_buildings\berezino.sqf";
+
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\ChernoQuarantie_Zone.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\dk_ChernoBlocks.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\dk_ChernoHill.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\dk_GrassCutter.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\dk_Medvedskoye.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\dk_Skalisty.sqf";
+
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_LM_tubf.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_LM_wlcr.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_TE_bash.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_TE_btcc.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_TE_htlh.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_TE_klen.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_TE_neaf.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_TE_stary.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_SI_Grishino.sqf";
+call compile preProcessFileLineNumbers "z\addons\dayz_server\3rd_party_buildings\GOC_SI_Zelenogorsk.sqf";
