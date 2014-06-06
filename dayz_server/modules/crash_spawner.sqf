@@ -8,7 +8,7 @@ Script Version: 1.2 (added mass graves as per MadHatter's request)
 private["_timeAdjust","_timeToSpawn","_spawnRoll","_crash","_hasAdjustment","_newHeight","_adjustedPos","_useStatic","_crashDamage","_lootRadius","_preWaypoints","_preWaypointPos","_endTime","_startTime","_safetyPoint","_heliStart","_deadBody","_exploRange","_heliModel","_lootPos","_list","_craters","_dummy","_wp2","_wp3","_landingzone","_aigroup","_wp","_helipilot","_crash","_crashwreck","_smokerand","_staticcoords","_pos","_dir","_position","_num","_config","_itemType","_itemChance","_weights","_index","_iArray","_crashModel","_lootTable","_guaranteedLoot","_randomizedLoot","_frequency","_variance","_spawnChance","_spawnMarker","_spawnRadius","_spawnFire","_permanentFire","_crashName"];
 //############### //Config Start\\ ###############\\
 _SpawnMax 		= 100;				//Maximum percent chance of spawning a crash number between 0 - 100
-_SpawnMin 		= 50;				//Minimum percent chance of spawning a crash number between 0 - 100
+_SpawnMin 		= 0;				//Minimum percent chance of spawning a crash number between 0 - 100
 _guaranteedLoot = 3;				//Guaranteed Loot Spawns
 _randomizedLoot = 4;				//Random number of loot piles aswell as the guaranteed ones
 _spawnFire      = true;				//Spawn Smoke/Fire at the helicrash
@@ -172,7 +172,8 @@ if (_spawnRoll <= _spawnChance) then
 		publicVariable "heliCrash";
 		deletevehicle _crashwreck;
 		deletevehicle _helipilot;
-		deletevehicle _landingzone;
+		deletevehicle _landingzone;		
+		
 		_crash = createVehicle [_crashModel, _pos, [], 0, "CAN_COLLIDE"];
 		_crash setVariable ["ObjectID","1",true];
 		PVDZE_serverObjectMonitor set [count PVDZE_serverObjectMonitor,_crash];
@@ -196,12 +197,19 @@ if (_spawnRoll <= _spawnChance) then
 			_index = _weights select _index;
 			_itemType = _itemTypes select _index;
 			[_itemType select 0, _itemType select 1, _lootPos, 5] call spawn_loot;
-			diag_log(format["CRASHSPAWNER: Loot spawn at '%1' with loot table '%2'", _lootPos, _lootTable]);
+			diag_log(format["CRASHSPAWNER: Loot spawn at '%1' with loot table '%2'", _lootPos, _lootTable]);											
+			
 			_nearby = _pos nearObjects ["ReammoBox", sizeOf(_crashModel)];
 			{
 				_x setVariable ["permaLoot",true];
 			} forEach _nearBy;
-		};
+		};	
+//Heli crash Markers and alert player		  	 
+
+		crashPostion = getPos _crash; //find crash positon
+		PublicVariable "crashPostion";// make crash postion available to the spawn marker script
+		[] execVM "\z\addons\dayz_code\modules\crashmarker.sqf"; //call the spawn marker spawn script
+	
 		_endTime = time - _startTime;
 		diag_log(format["CRASHSPAWNER: Crash completed! Wreck at: %2 - Runtime: %1 Seconds || Distance from calculated POC: %3 meters", round(_endTime), str(getPos _crash), round(_position distance _crash)]); 
 	};
